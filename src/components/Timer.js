@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import TimerUtil from "./TimerUtil";
 
+import Button from "react-bootstrap/Button";
+
 export class Timer extends Component {
   state = {
     showHome: true,
@@ -13,9 +15,27 @@ export class Timer extends Component {
   render() {
     return (
       <div>
-        {this.state.showHome ? <TimerUtil /> : <h1>Hello</h1>}
-        <button onClick={() => this.toggleHome(false)}>Hide Home</button>
-        <button onClick={() => this.toggleHome(true)}>Show Home</button>
+        {this.state.showHome ? (
+          <TimerUtil />
+        ) : (
+          <h1 className="text-center">Hello</h1>
+        )}
+        <div className="text-center">
+          <Button
+            className="m-1"
+            onClick={() => this.toggleHome(false)}
+            variant="danger"
+          >
+            Hide Timer
+          </Button>
+          <Button
+            className="m-1"
+            onClick={() => this.toggleHome(true)}
+            variant="info"
+          >
+            Show Timer
+          </Button>
+        </div>
       </div>
     );
   }
