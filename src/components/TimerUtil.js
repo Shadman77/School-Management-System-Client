@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class HomePage extends Component {
+export class TimerUtil extends Component {
   state = {
     seconds: 0,
   };
@@ -43,4 +43,4 @@ export class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default TimerUtil;
