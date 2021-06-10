@@ -7,6 +7,7 @@ import About from "./components/About";
 import Timer from "./components/Timer";
 import Home from "./components/Home";
 import Menu from "./components/Menu";
+import Todos from "./components/Todos";
 export class App extends Component {
   render() {
     return (
@@ -19,6 +20,9 @@ export class App extends Component {
             </Route>
             <Route path="/timer">
               <Timer></Timer>
+            </Route>
+            <Route path="/todos">
+              <Todos></Todos>
             </Route>
             <Route path="/">
               <Home></Home>
