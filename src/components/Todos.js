@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { ListGroup } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getTodos } from "../redux/actions/todosActions";
 const axios = require("axios");
 
 export class Todos extends Component {
@@ -7,7 +10,12 @@ export class Todos extends Component {
     todos: [],
   };
 
+  static propsType = {
+    getTodos: PropTypes.func.isRequired,
+  };
+
   async componentDidMount() {
+    await this.props.getTodos()
     const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
     console.log(res);
     await this.setState({ todos: res.data });
@@ -26,4 +34,9 @@ export class Todos extends Component {
   }
 }
 
-export default Todos;
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
+
+// export default Todos;
+export default connect(mapStateToProps, { getTodos })(Todos);
