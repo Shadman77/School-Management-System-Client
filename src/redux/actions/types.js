@@ -1,1 +1,2 @@
 export const GET_TODOS = 'GET_TODOS'
+export const SET_TODOS_LOADING = 'SET_TODOS_LOADING'
