@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 function Register() {
+  // define state
+  const [email, setEmail] = useState("Email");
+  const [password, setPassword] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log("triggered");
@@ -17,7 +21,15 @@ function Register() {
     }
   };
 
-  
+  const handleChange = (event) => {
+    // this.setState({value: event.target.value});
+    if (event.target.name === "email") {
+      setEmail(event.target.value);
+    } else if (event.target.name === "password") {
+      setPassword(event.target.value);
+    }
+    console.log(event.target.name, event.target.value);
+  };
 
   return (
     // <Container fluid>
@@ -25,7 +37,13 @@ function Register() {
       <Form id="myForm" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control name="email" type="email" placeholder="Enter email" />
+          <Form.Control
+            name="email"
+            type="email"
+            value={email}
+            placeholder="Enter email"
+            onChange={handleChange}
+          />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
@@ -36,6 +54,8 @@ function Register() {
           <Form.Control
             name="password"
             type="password"
+            onChange={handleChange}
+            value={password}
             placeholder="Password"
           />
         </Form.Group>
