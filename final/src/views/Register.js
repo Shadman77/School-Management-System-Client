@@ -1,19 +1,21 @@
 import React, { useState } from "react";
+// import Link from "react-router-dom/Link";
 import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 
+const Link = require("react-router-dom").Link
+
 function Register() {
   // define state
   const [user, setUser] = useState({
-    email: "1",
+    email: "",
     password: "",
   });
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -38,11 +40,11 @@ function Register() {
     newUser[event.target.name] = event.target.value;
     setUser(newUser);
 
-    if (event.target.name === "email") {
-      setEmail(event.target.value);
-    } else if (event.target.name === "password") {
-      setPassword(event.target.value);
-    }
+    // if (event.target.name === "email") {
+    //   setEmail(event.target.value);
+    // } else if (event.target.name === "password") {
+    //   setPassword(event.target.value);
+    // }
 
     console.log(event.target.name, event.target.value);
   };
@@ -76,10 +78,12 @@ function Register() {
           <TextField
             placeholder="Enter email"
             name="password"
-            value={password}
+            // value={password}
+            value={user.password}
             onChange={handleChange}
             label="Password"
             variant="outlined"
+            type="password"
             style={{
               width: "100%",
             }}
@@ -104,6 +108,9 @@ function Register() {
           </Button>
         </div>
       </Form>
+      <p className="text-center">
+        Not a user? <Link to="/login">Login</Link>
+      </p>
     </Container>
   );
 }

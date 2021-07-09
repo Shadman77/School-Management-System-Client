@@ -25,6 +25,9 @@ function Menu() {
           <Link className="nav-link" to="/register">
             Register
           </Link>
+          <Link className="nav-link" to="/login">
+            Login
+          </Link>
           <Nav.Link href="#features">Features</Nav.Link>
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
